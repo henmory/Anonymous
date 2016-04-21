@@ -44,7 +44,8 @@
         <EditText
             android:layout_width="200pt"
             android:layout_height="wrap_content"
-            android:id="@+id/edt_getCode"/>
+            android:id="@+id/edt_Code"
+            android:inputType="number"/>
     </LinearLayout>
     <Button
         android:layout_width="wrap_content"
