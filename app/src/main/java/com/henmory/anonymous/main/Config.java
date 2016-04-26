@@ -29,6 +29,7 @@ public class Config {
     public static final String ACTION_TIMELINE = "timeline";
     public static final String ACTION_GETCOMMENT = "get_comment";
     public static final String ACTION_PUBLISH_COMMENT = "pub_comment";
+    public static final String ACTION_PUBLISH_MESSAGE = "publish_message";
 
     public static final String CHARSET = "UTF-8";
 

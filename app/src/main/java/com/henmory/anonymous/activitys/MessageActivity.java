@@ -61,7 +61,8 @@ public class MessageActivity extends AppCompatActivity {
                                 public void onSuccess(int result) {
                                     if (1 == result){
                                         data.add(etPublishComment.getText().toString());
-                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MessageActivity.this, R.layout.array_item, data);
+                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MessageActivity.this,
+                                                R.layout.array_item, data);
                                         lv.setAdapter(adapter);
                                         etPublishComment.setText("");
                                     }
@@ -78,6 +79,7 @@ public class MessageActivity extends AppCompatActivity {
                                     Intent intent = new Intent(MessageActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                     finish();
+                                    break;
                             }
                         }
                     });

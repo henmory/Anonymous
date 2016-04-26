@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class TimeLineActivity extends AppCompatActivity {
     private List<String> msgShow = new ArrayList<>();//只显示的数据，msg
     private ListView lv;
     private  int highMsgID;
+    private Button btnPublishMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,8 @@ public class TimeLineActivity extends AppCompatActivity {
         my_num = getIntent().getStringExtra(Config.KEY_PHONE_NUM);
         token = getIntent().getStringExtra(Config.KEY_TOKEN);
         contacts = MyContacts.getContactsPhoneNumber(this);
+
+        btnPublishMessage = (Button) findViewById(R.id.btn_publish_message);
         new UploadContacts(my_num, token, contacts, new UploadContacts.SuccessCallback() {
             @Override
             public void onSuccess() {
@@ -95,6 +99,16 @@ public class TimeLineActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        btnPublishMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TimeLineActivity.this, PublishMessageActivity.class);
+                intent.putExtra(Config.KEY_TOKEN, token);
+                intent.putExtra(Config.KEY_PHONE_NUM, my_num);
+                startActivity(intent);
             }
         });
     }

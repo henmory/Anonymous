@@ -8,52 +8,53 @@ import org.json.JSONObject;
 /**
  * Created by dan on 16/4/26.
  */
-public class PublishComments {
-
-    public PublishComments(String phoneNum, String token, String comment, int msgID ,
-                           final SuccessCallback successCallback, final FailCallback failCallback) {
+public class PublishMessage {
+    public PublishMessage(String myPhoneNum, String token, String msg, final SuccessCallback successCallback, final FailCallback failCallback) {
 
         new NetConnection(Config.SERVICE_ADD, new NetConnection.SuccessCallBack() {
             @Override
             public void successCallBack(String result) {
                 try {
                     JSONObject jsonObject = new JSONObject(result);
-                    switch (jsonObject.getInt(Config.KEY_STATUS)){
+                    switch(jsonObject.getInt(Config.KEY_STATUS)){
                         case Config.STATUS_SUCCESS:
-                            if (successCallback != null){
-                                successCallback.onSuccess(Config.STATUS_SUCCESS);
+                            if (null != successCallback){
+                                successCallback.onSuccess();
                             }
                             break;
+                        case Config.STATUS_INVALID_TOKEN:
+                            if (null != failCallback){
+                                failCallback.onFail(Config.STATUS_INVALID_TOKEN);
+                            }
                         default:
-                            if (failCallback != null) {
-                                failCallback.onFail(jsonObject.getInt(Config.KEY_STATUS));
+                            if (null != failCallback){
+                                failCallback.onFail(Config.STATUS_FAIL);
                             }
                             break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if (null != failCallback){
+                        failCallback.onFail(Config.STATUS_FAIL);
+                    }
                 }
-
             }
         }, new NetConnection.FailedCallBack() {
             @Override
             public void failedCallBack() {
-                if (failCallback != null) {
+                if (null != failCallback){
                     failCallback.onFail(Config.STATUS_FAIL);
                 }
             }
-        },HttpMethord.POST,
-                Config.KEY_ACTION, Config.ACTION_PUBLISH_COMMENT,
-                Config.KEY_PHONE_NUM, phoneNum,
+        },HttpMethord.POST,Config.KEY_ACTION, Config.ACTION_PUBLISH_MESSAGE,
+                Config.KEY_PHONE_NUM, myPhoneNum,
                 Config.KEY_TOKEN, token,
-                Config.KEY_COMMENT, comment,
-                Config.KEY_MSG_ID, msgID + "");
+                Config.KEY_MSG, msg);
     }
 
     public static interface SuccessCallback{
-        public void onSuccess(int result);
+        public void onSuccess();
     }
-
     public static interface FailCallback{
         public void onFail(int errorCode);
     }
