@@ -76,7 +76,9 @@ public class TimeLineActivity extends AppCompatActivity {
                             comment.add(data.get(i).getComment());
                         }
                         Intent intent = new Intent(TimeLineActivity.this, MessageActivity.class);
+                        intent.putExtra(Config.KEY_PHONE_NUM, my_num);
                         intent.putExtra(Config.KEY_MSG_ID, msgID);
+                        intent.putExtra(Config.KEY_TOKEN, token);
                         intent.putStringArrayListExtra(Config.KEY_COMMENT, (ArrayList<String>) comment);
                         startActivity(intent);
                     }

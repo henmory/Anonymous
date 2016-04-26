@@ -21,14 +21,14 @@ public class Config {
     public static final String KEY_TIMELINE = "timeline" ;
     public static final String KEY_MSG_ID = "msgId";
     public static final String KEY_COMMENT = "comment";
-
     public static final String KEY_MSG = "msg";
+
     public static final String ACION_GET_GODE = "send_pass";
     public static final String ACTION_LOGIN = "login";
     public static final String ACTION_UPLOAD_CONTACTS = "upload_contacts";
     public static final String ACTION_TIMELINE = "timeline";
-
     public static final String ACTION_GETCOMMENT = "get_comment";
+    public static final String ACTION_PUBLISH_COMMENT = "pub_comment";
 
     public static final String CHARSET = "UTF-8";
 
