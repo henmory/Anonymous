@@ -8,9 +8,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -76,13 +74,13 @@ public class NetConnection {
                 if (result == null) {
                     if (failedCallBack != null) {
                         System.out.println("NetConnection failed");
-                        failedCallBack.failedCallBack();
+                        failedCallBack.onFail();
                     }
                 }else {
                     if(successCallBack != null){
                         System.out.println("NetConnection success!");
                         System.out.println("result = " + result);
-                        successCallBack.successCallBack(result);
+                        successCallBack.onSucces(result);
                     }
                 }
                 super.onPostExecute(result);
@@ -91,9 +89,9 @@ public class NetConnection {
     }
 
     public static interface SuccessCallBack{
-        void successCallBack(String result);
+        void onSucces(String result);
     }
     public static interface FailedCallBack{
-        void failedCallBack();
+        void onFail();
     }
 }

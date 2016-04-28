@@ -16,7 +16,7 @@ public class UploadContacts {
 
             new NetConnection(Config.SERVICE_ADD, new NetConnection.SuccessCallBack() {
                 @Override
-                public void successCallBack(String result) {
+                public void onSucces(String result) {
                     try {
                         JSONObject jsonObj = new JSONObject(result);
                         switch(jsonObj.getInt(Config.KEY_STATUS)){
@@ -42,7 +42,7 @@ public class UploadContacts {
                 }
             }, new NetConnection.FailedCallBack() {
                 @Override
-                public void failedCallBack() {
+                public void onFail() {
                     if (null != failCallback) {
                         failCallback.onFail(Config.STATUS_FAIL);
                     }

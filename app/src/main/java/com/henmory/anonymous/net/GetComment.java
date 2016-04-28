@@ -19,7 +19,7 @@ public class GetComment {
 
         new NetConnection(Config.SERVICE_ADD, new NetConnection.SuccessCallBack() {
             @Override
-            public void successCallBack(String result) {
+            public void onSucces(String result) {
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     switch (jsonObject.getInt(Config.KEY_STATUS)){
@@ -63,7 +63,7 @@ public class GetComment {
             }
         }, new NetConnection.FailedCallBack() {
             @Override
-            public void failedCallBack() {
+            public void onFail() {
                 if (null != failCallback){
                     failCallback.onFail(Config.STATUS_FAIL);
                 }

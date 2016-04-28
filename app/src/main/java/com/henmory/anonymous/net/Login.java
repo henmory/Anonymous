@@ -14,7 +14,7 @@ public class Login {
 
         new NetConnection(Config.SERVICE_ADD, new NetConnection.SuccessCallBack() {
             @Override
-            public void successCallBack(String result) {
+            public void onSucces(String result) {
                 JSONObject json = null;
                 try {
                     json = new JSONObject(result);
@@ -40,7 +40,7 @@ public class Login {
             }
         }, new NetConnection.FailedCallBack() {
             @Override
-            public void failedCallBack() {
+            public void onFail() {
                 if (failCallback != null) {
                     failCallback.onFail();
                 }
