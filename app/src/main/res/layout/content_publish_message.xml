@@ -12,13 +12,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_publish_message"
     tools:context="com.henmory.anonymous.activitys.PublishMessageActivity"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="horizontal">
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="0pt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:id="@+id/et_publish_message"/>
+        android:id="@+id/et_publish_message"
+        android:hint="Send a message"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
