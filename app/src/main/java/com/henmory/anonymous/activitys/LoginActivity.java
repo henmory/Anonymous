@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+                dialog.setTitle("登录中，请守候...");
+                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 dialog.show();
 
                 new Login(edPhoneNum.getText().toString(), edCode.getText().toString(), new Login.SuccessCallback() {
@@ -85,15 +87,20 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, R.string.phonenum_is_not_null, Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+                dialog.setTitle("验证码获取中，请守候...");
+                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                dialog.show();
                 new GetCode(edPhoneNum.getText().toString(), new GetCode.SuccessCallback() {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(LoginActivity.this, R.string.success_to_get_code, Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                     }
                 }, new GetCode.FailCallback() {
                     @Override
                     public void onFail() {
+                        dialog.dismiss();
                         Toast.makeText(LoginActivity.this, R.string.fail_to_get_code, Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -117,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_action_search) {
             return true;
         }
 

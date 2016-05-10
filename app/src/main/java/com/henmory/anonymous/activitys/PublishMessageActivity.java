@@ -2,6 +2,7 @@ package com.henmory.anonymous.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -95,11 +96,16 @@ public class PublishMessageActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_action_search) {
             return true;
         }
-
-        return super.onOptionsItemSelected(item);
+        else if(id == android.R.id.home){
+            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        }
+        else
+            return super.onOptionsItemSelected(item);
     }
 
 

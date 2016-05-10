@@ -39,6 +39,7 @@ public class NetConnection {
                             connection = urlString.openConnection();
                             connection.setDoInput(true);
                             connection.setDoOutput(true);
+                            connection.setConnectTimeout(5000);//设置超时时间，避免用户长时间等待
                             OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream(), Config.CHARSET);
                             BufferedWriter bw = new BufferedWriter(osw);
                             bw.write(sb.toString());//写到内存中
