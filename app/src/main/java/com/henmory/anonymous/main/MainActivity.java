@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
 import com.henmory.anonymous.activitys.LoginActivity;
 import com.henmory.anonymous.activitys.TimeLineActivity;
 import com.henmory.anonymous.database.MyDatabaseHelper;
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static String token;
     private static String phoneNum;
+    private static final String  ACTIVITY_TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         if ((token == null) || (phoneNum == null)) {
             startActivity(new Intent(this, LoginActivity.class));
         } else {
-            System.out.println("token is valid, and enter main screen");
+            Log.d(ACTIVITY_TAG, "token is valid, and enter main screen");
             Intent i = new Intent(this, TimeLineActivity.class);
             i.putExtra(Config.KEY_TOKEN, token);
             i.putExtra(Config.KEY_PHONE_NUM, phoneNum);
             startActivity(i);
         }
         finish();
-        testDatabase();
+//        testDatabase();
     }
 
     //测试数据库
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //insert
         sql = "insert into "  + MyDatabaseHelper.TABLE_NAME + " (username, password)"
                 + " values ('henmory', 'changhong')";
-        System.out.println(sql);
+        Log.d(ACTIVITY_TAG,sql);
         db.execSQL(sql);
         sql = "insert into " + MyDatabaseHelper.TABLE_NAME + "(username, password)"
                 + " values ('hao de', 'ok')";
@@ -49,20 +52,20 @@ public class MainActivity extends AppCompatActivity {
 
        //delete
         sql = "delete from " + MyDatabaseHelper.TABLE_NAME + " where username = 'henmory'";
-        System.out.println(sql);
+        Log.d(ACTIVITY_TAG,sql);
         db.execSQL(sql);
 
         //modify
         sql = "update " + MyDatabaseHelper.TABLE_NAME + " set password = '123' where username = 'hao de'";
-        System.out.println(sql);
+        Log.d(ACTIVITY_TAG,sql);
         db.execSQL(sql);
 
         //query
         sql = "select * from " + MyDatabaseHelper.TABLE_NAME + " where username = 'hao de'" ;
-        System.out.println(sql);
+        Log.d(ACTIVITY_TAG,sql);
         Cursor c = db.rawQuery(sql, null);
         while (c.moveToNext()){
-            System.out.println(c.getColumnCount());
+            Log.d(ACTIVITY_TAG,c.getColumnCount() + "");
         }
     }
 
