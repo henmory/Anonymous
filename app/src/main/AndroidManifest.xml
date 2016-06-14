@@ -50,10 +50,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activitys.TimeLineActivity"/>
             </activity>
-        <activity
-            android:name=".main.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
