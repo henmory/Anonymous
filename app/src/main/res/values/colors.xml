@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorSelectedEditText">#c2c2c2</color>
+    <color name="colorunSelectedEditText">#000000</color>
+    <color name="colorCursor">#303F9F</color>
+    <color name="colorCustomProgressDialogBackground">#545454</color>
 </resources>

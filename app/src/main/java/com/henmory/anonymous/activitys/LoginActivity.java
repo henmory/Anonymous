@@ -24,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText edPhoneNum = null;
     private EditText edCode = null;
-    private Button btnGetCode;
     private Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
         edPhoneNum = (EditText) findViewById(R.id.edt_phoneNum);
         edCode = (EditText) findViewById(R.id.edt_Code);
-        btnGetCode = (Button) findViewById(R.id.btn_getCode);
         btnLogin = (Button) findViewById(R.id.btn_login);
 
         //登录
@@ -75,34 +73,6 @@ public class LoginActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
 
-                });
-            }
-        });
-        //获取验证码
-        btnGetCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (TextUtils.isEmpty(edPhoneNum.getText())) {
-                    Toast.makeText(LoginActivity.this, R.string.phonenum_is_not_null, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
-                dialog.setTitle("验证码获取中，请守候...");
-                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                dialog.show();
-                new GetCode(edPhoneNum.getText().toString(), new GetCode.SuccessCallback() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(LoginActivity.this, R.string.success_to_get_code, Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                }, new GetCode.FailCallback() {
-                    @Override
-                    public void onFail() {
-                        dialog.dismiss();
-                        Toast.makeText(LoginActivity.this, R.string.fail_to_get_code, Toast.LENGTH_SHORT).show();
-                    }
                 });
             }
         });

@@ -30,4 +30,5 @@
     </string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="test">test</string>
+    <string name="title_activity_get_code">GetCodeActivity</string>
 </resources>
