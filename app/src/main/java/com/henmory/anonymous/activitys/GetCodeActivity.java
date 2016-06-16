@@ -57,6 +57,7 @@ public class GetCodeActivity extends AppCompatActivity {
                     public void onSuccess() {
                         Toast.makeText(GetCodeActivity.this, R.string.success_to_get_code, Toast.LENGTH_SHORT).show();
 //                        dialog.dismiss();
+                        customProgressDialog.dismiss();
                         finish();
                         startActivity(new Intent(GetCodeActivity.this, LoginActivity.class));
                     }
