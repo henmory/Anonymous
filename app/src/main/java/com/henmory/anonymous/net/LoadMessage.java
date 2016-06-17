@@ -23,14 +23,14 @@ public class LoadMessage {
                     switch (jsonObj.getInt(Config.KEY_STATUS)){
                         case Config.STATUS_SUCCESS:
                             if (null != successCallback){
-                                List<Messsage> data = new ArrayList<Messsage>();
+                                List<Message> data = new ArrayList<Message>();
                                 JSONArray dataArr = jsonObj.getJSONArray(Config.KEY_TIMELINE);
-                                Messsage msg = null;
+                                Message msg = null;
                                 JSONObject jsonObject = null;
 
                                 for (int i = 0; i < dataArr.length(); i++) {
                                     jsonObject = dataArr.getJSONObject(i);
-                                    msg = new Messsage(
+                                    msg = new Message(
                                             jsonObject.getInt(Config.KEY_MSG_ID),
                                             jsonObject.getString(Config.KEY_PHONE_NUM),
                                             jsonObject.getString(Config.KEY_MSG));
@@ -67,7 +67,7 @@ public class LoadMessage {
     }
 
     public static interface SuccessCallback{
-        void onSuccess(int pageIndex, int perPageItemNum, List<Messsage> timeline);
+        void onSuccess(int pageIndex, int perPageItemNum, List<Message> timeline);
 
     }
 

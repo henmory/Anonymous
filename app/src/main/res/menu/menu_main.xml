@@ -10,17 +10,17 @@
         android:icon="@android:drawable/ic_menu_search"
         />
 
-    <item
-        android:id="@+id/menu_action_notify"
-        android:icon="@android:drawable/ic_notification_overlay"
-        app:showAsAction="ifRoom"
-        android:title="notification" />
-    <item
-        android:id="@+id/menu_item_1"
-        android:title="item1"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/menu_item_2"
-        android:title="item2"
-        app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/menu_action_notify"-->
+        <!--android:icon="@android:drawable/ic_notification_overlay"-->
+        <!--app:showAsAction="ifRoom"-->
+        <!--android:title="notification" />-->
+    <!--<item-->
+        <!--android:id="@+id/menu_item_1"-->
+        <!--android:title="item1"-->
+        <!--app:showAsAction="never"/>-->
+    <!--<item-->
+        <!--android:id="@+id/menu_item_2"-->
+        <!--android:title="item2"-->
+        <!--app:showAsAction="never"/>-->
 </menu>

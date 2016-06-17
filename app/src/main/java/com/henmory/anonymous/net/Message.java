@@ -3,13 +3,13 @@ package com.henmory.anonymous.net;
 /**
  * Created by dan on 16/4/18.
  */
-public class Messsage {
+public class Message {
 
     private int msgId;
     private String msg;
     private String phoneNum;
 
-    public Messsage(int msgId, String phoneNum, String msg) {
+    public Message(int msgId, String phoneNum, String msg) {
         this.msgId = msgId;
         this.phoneNum = phoneNum;
         this.msg = msg;

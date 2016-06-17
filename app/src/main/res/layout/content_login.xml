@@ -77,13 +77,23 @@
             android:background="@drawable/edit_text_background"/>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/linear2"
+        android:layout_marginBottom="@dimen/divider_bottom_margin"
+        android:layout_marginTop="@dimen/divider_top_margin"
+        android:id="@+id/divider3"/>
+
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/linear2"
-        android:text="@string/login" />
+        android:layout_below="@id/divider3"
+        android:text="@string/login"
+        android:background="@drawable/button_background"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -91,6 +101,6 @@
         android:layout_below="@id/btn_login"
         android:layout_marginBottom="@dimen/divider_bottom_margin"
         android:layout_marginTop="@dimen/divider_top_margin"
-        android:id="@+id/divider3"/>
+        android:id="@+id/divider4"/>
 
 </RelativeLayout>

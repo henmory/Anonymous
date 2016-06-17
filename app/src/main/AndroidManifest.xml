@@ -18,42 +18,42 @@
             android:name=".main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activitys.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activitys.TimeLineActivity"
+            android:name=".activitys.MessageListActivity"
             android:label="@string/title_activity_time_line"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
         <activity
             android:name=".activitys.MessageActivity"
             android:label="@string/title_activity_message"
-            android:parentActivityName=".activitys.TimeLineActivity"
+            android:parentActivityName=".activitys.MessageListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activitys.TimeLineActivity" />
+                android:value=".activitys.MessageListActivity" />
         </activity>
         <activity
             android:name=".activitys.PublishMessageActivity"
             android:label="@string/title_activity_publish_message"
-            android:parentActivityName=".activitys.TimeLineActivity"
+            android:parentActivityName=".activitys.MessageListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activitys.TimeLineActivity" />
+                android:value=".activitys.MessageListActivity" />
         </activity>
         <activity
             android:name=".activitys.GetCodeActivity"
             android:label="@string/title_activity_get_code"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
     </application>

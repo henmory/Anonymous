@@ -1,27 +1,20 @@
 package com.henmory.anonymous.activitys;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.os.CountDownTimer;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henmory.anonymous.R;
-import com.henmory.anonymous.custviews.CustomProgressDialog;
+import com.henmory.anonymous.customviews.CustomProgressDialog;
 import com.henmory.anonymous.net.GetCode;
 
-public class GetCodeActivity extends AppCompatActivity {
-
+public class GetCodeActivity extends BaseActivity {
 
     private EditText edPhoneNum = null;
     private Button btnGetCode;
@@ -44,6 +37,21 @@ public class GetCodeActivity extends AppCompatActivity {
                     Toast.makeText(GetCodeActivity.this, R.string.phonenum_is_not_null, Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // TODO: 6/16/16
+                CountDownTimer timer = new CountDownTimer(60000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        btnGetCode.setText("发送验证码(" + millisUntilFinished / 1000 + ")秒");
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        btnGetCode.setText("发送验证码");
+                        btnGetCode.setEnabled(true);
+                    }
+                };
+                timer.start();
+                btnGetCode.setEnabled(false);
                 final CustomProgressDialog customProgressDialog = new CustomProgressDialog(GetCodeActivity.this, R.style.CustomProgressDialog);
                 customProgressDialog.setMessage("加载中...");
                 customProgressDialog.setCancelable(false);
@@ -67,12 +75,13 @@ public class GetCodeActivity extends AppCompatActivity {
                         customProgressDialog.dismiss();
 //                        dialog.dismiss();
                         Toast.makeText(GetCodeActivity.this, R.string.fail_to_get_code, Toast.LENGTH_SHORT).show();
-//                        finish();
-//                        startActivity(new Intent(GetCodeActivity.this, LoginActivity.class));
+                        finish();
+                        startActivity(new Intent(GetCodeActivity.this, LoginActivity.class));
                     }
                 });
             }
         });
+
 
     }
 

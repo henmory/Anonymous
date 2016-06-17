@@ -1,23 +1,18 @@
 package com.henmory.anonymous.activitys;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.henmory.anonymous.R;
+import com.henmory.anonymous.customviews.CustomProgressDialog;
 import com.henmory.anonymous.main.Config;
-import com.henmory.anonymous.net.GetCode;
 import com.henmory.anonymous.net.Login;
 
 public class LoginActivity extends AppCompatActivity {
@@ -47,9 +42,8 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, R.string.phoneNum_and_code_is_not_null, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
-                dialog.setTitle("登录中，请守候...");
-                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                final CustomProgressDialog dialog = new CustomProgressDialog(LoginActivity.this, R.style.CustomProgressDialog);
+                dialog.setMessage("登录中，请守候...");
                 dialog.show();
 
                 new Login(edPhoneNum.getText().toString(), edCode.getText().toString(), new Login.SuccessCallback() {
@@ -60,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                         Config.cachedToken(LoginActivity.this, result);
                         Config.cachedPhoneNum(LoginActivity.this, edPhoneNum.getText().toString());
 
-                        Intent intent = new Intent(LoginActivity.this, TimeLineActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MessageListActivity.class);
                         intent.putExtra(Config.KEY_PHONE_NUM, edPhoneNum.getText().toString());
                         intent.putExtra(Config.KEY_TOKEN, result);
                         startActivity(intent);

@@ -1,9 +1,7 @@
-package com.henmory.anonymous.custviews;
+package com.henmory.anonymous.customviews;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.henmory.anonymous.R;
@@ -15,12 +13,6 @@ public class CustomProgressDialog extends Dialog {
 
     private TextView tv_message;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("onCreate");
-        super.onCreate(savedInstanceState);
-    }
-
     public CustomProgressDialog(Context context) {
         super(context);
     }
@@ -31,22 +23,17 @@ public class CustomProgressDialog extends Dialog {
         tv_message = (TextView) findViewById(R.id.custom_progress_dailog_text_view);
     }
 
-    protected CustomProgressDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+    public CustomProgressDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
 
     }
 
-    public void setMessage(CharSequence msg){
+    public void setMessage(CharSequence msg) {
         if (tv_message != null) {
-            System.out.println("tv_message is not null");
             tv_message.setText(msg);
             tv_message.setTextSize(20);
             tv_message.invalidate();
-        }else{
-            System.out.println("null");
         }
     }
-
-
 
 }

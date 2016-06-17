@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.henmory.anonymous.activitys.TimeLineActivity"
+    tools:context=".activitys.MessageListActivity"
     tools:showIn="@layout/activity_time_line"
     android:orientation="vertical">
     <ListView
@@ -21,16 +21,5 @@
         android:headerDividersEnabled="false">
 
     </ListView>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_publish_message"
-            android:text="发送状态"/>
-    </LinearLayout>
-
 
 </LinearLayout>

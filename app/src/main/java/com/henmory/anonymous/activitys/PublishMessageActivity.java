@@ -52,7 +52,7 @@ public class PublishMessageActivity extends AppCompatActivity {
                             new PublishMessage.SuccessCallback() {
                                 @Override
                                 public void onSuccess() {
-                                    Intent intent = new Intent(PublishMessageActivity.this, TimeLineActivity.class);
+                                    Intent intent = new Intent(PublishMessageActivity.this, MessageListActivity.class);
                                     intent.putExtra(Config.KEY_PHONE_NUM, myPhoneNum);
                                     intent.putExtra(Config.KEY_TOKEN, token);
                                     startActivity(intent);
@@ -80,33 +80,4 @@ public class PublishMessageActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_action_search) {
-            return true;
-        }
-        else if(id == android.R.id.home){
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
-        }
-        else
-            return super.onOptionsItemSelected(item);
-    }
-
-
 }

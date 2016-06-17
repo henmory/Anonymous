@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.henmory.anonymous.activitys.LoginActivity;
-import com.henmory.anonymous.activitys.TimeLineActivity;
+import com.henmory.anonymous.activitys.MessageListActivity;
 import com.henmory.anonymous.database.MyDatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
         } else {
             Log.d(ACTIVITY_TAG, "token is valid, and enter main screen");
-            Intent i = new Intent(this, TimeLineActivity.class);
+            Intent i = new Intent(this, MessageListActivity.class);
             i.putExtra(Config.KEY_TOKEN, token);
             i.putExtra(Config.KEY_PHONE_NUM, phoneNum);
             startActivity(i);
